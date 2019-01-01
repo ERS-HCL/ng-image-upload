@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <h3 class="card p-2 m-1 text-center">Upload or Drag and Drop</h3>
+  <div class="jumbotron" appDragDrop (someEvent)="onFileChange($event, 'drag')">
+    <h3 class="text-center text-black-50">
+      <a href="javascript:void(0)" (click)="file.click()">
+        Upload Image
+      </a>
+      (or) Drag and Drop Image
+      <input  type="file" #file 
+              style="display:none;" 
+              (change)="onFileChange($event, 'input')"
+              accept="image/*" />
+    </h3>
+  </div>
+</div>
+<div class="container-fluid">
+  <div *ngIf='url'>
+    <div class='h6 text-primary'>Preview Image</div>
+    <img [src]="url" alt="image" class="img-responsive" height='250px'>
+  </div>
+  <div class="alert alert-danger" *ngIf='errorMsg'>
+    {{ errorMsg }}
+  </div>
+</div>
